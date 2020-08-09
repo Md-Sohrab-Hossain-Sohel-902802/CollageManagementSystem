@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="20dp"
+    app:cardBackgroundColor="@color/colorPrimaryDark"
+
+    >
+
+    <RelativeLayout
+        android:padding="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/classlistDiolouge_tilteTextviewid"
+
+            android:text="Md Sohrab Hossain Sohel"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/white"
+            />
+
+
+
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/classlistDiolouge_ClassnameEdittextid"
+            android:layout_below="@+id/classlistDiolouge_tilteTextviewid"
+            android:background="@drawable/buttonbackground"
+            android:hint="Enter Your Classname"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:textColorHint="#fff"
+            android:padding="15dp"
+            android:layout_marginTop="25dp"
+            />
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_below="@+id/classlistDiolouge_ClassnameEdittextid"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/edit_text_bg"
+
+            android:text="Ok"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:id="@+id/classlistDiolouge_OkButtonid"
+
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

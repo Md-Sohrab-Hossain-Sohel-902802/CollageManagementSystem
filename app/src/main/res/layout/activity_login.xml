@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/login_photo"
+    android:padding="20dp"
+    tools:context=".LoginActivity">
+    <EditText
+
+        android:layout_centerInParent="true"
+        android:id="@+id/login_emailEdittextid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Mail Here"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_bg"
+        android:padding="10dp"
+        android:textColor="#013705"
+        android:textColorHint="#013705"
+
+
+
+
+        />
+
+
+
+    <EditText
+
+        android:layout_below="@+id/login_emailEdittextid"
+        android:layout_centerInParent="true"
+        android:id="@+id/login_PasswordEdittextid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Enter Your Password"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_bg"
+        android:padding="10dp"
+        android:textColor="#013705"
+        android:textColorHint="#013705"
+        android:layout_marginTop="20dp"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_LoginButtonid"
+        android:background="@drawable/buttonbackground"
+        android:layout_below="@+id/login_PasswordEdittextid"
+        android:layout_marginTop="25dp"
+        android:layout_centerInParent="true"
+        android:text="Login"
+        android:textColor="#fff"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/login_adminTextviewid"
+        android:text="Login as a admin"
+        android:layout_below="@id/login_LoginButtonid"
+        android:layout_alignParentRight="true"
+        android:textSize="17sp"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/buttonbackground"
+        android:padding="10dp"
+
+
+
+        />
+
+
+</RelativeLayout>

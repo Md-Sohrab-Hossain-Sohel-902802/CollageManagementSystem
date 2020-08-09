@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@drawable/buttonbackground"
+    android:layout_marginTop="10dp"
+    android:layout_height="wrap_content">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/teacher_classlist_ClassNameTextviewid"
+        android:text="Manage Class list"
+        android:padding="5dp"
+        android:textColor="#fff"
+        android:textSize="19sp"
+        android:textAlignment="center"
+
+
+        />
+    <TextView
+
+        android:layout_below="@+id/teacher_classlist_ClassNameTextviewid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/teacher_classlist_subjectTextviewid"
+        android:text="Manage Class list"
+     android:textColor="#fff"
+        android:textAlignment="center"
+        android:textSize="16sp"
+        android:layout_marginBottom="7dp"
+
+
+        />
+</RelativeLayout>

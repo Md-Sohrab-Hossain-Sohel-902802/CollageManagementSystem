@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp"
+    android:background="@drawable/login_photo"
+
+    tools:context=".CreateAccountActivity">
+    
+    <EditText
+
+        android:layout_centerInParent="true"
+        android:id="@+id/createAccount_emailEdittextid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Mail Here"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_bg"
+        android:padding="10dp"
+        android:textColor="#013705"
+        android:textColorHint="#013705"
+
+
+
+
+        />
+    <EditText
+
+        android:layout_below="@+id/createAccount_emailEdittextid"
+        android:layout_centerInParent="true"
+        android:id="@+id/createAccount_firstnameEdittextid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your First Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_bg"
+        android:padding="10dp"
+        android:textColor="#013705"
+        android:textColorHint="#013705"
+        android:layout_marginTop="20dp"
+
+        />
+    <EditText
+
+        android:layout_below="@+id/createAccount_firstnameEdittextid"
+        android:layout_centerInParent="true"
+        android:id="@+id/createAccount_lastnameEdittextid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your First Name"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_bg"
+        android:padding="10dp"
+        android:textColor="#013705"
+        android:textColorHint="#013705"
+        android:layout_marginTop="20dp"
+
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/createAccountNextButtonid"
+        android:background="@drawable/buttonbackground"
+        android:layout_below="@+id/createAccount_lastnameEdittextid"
+        android:layout_marginTop="25dp"
+        android:layout_centerInParent="true"
+        android:text="Next"
+        android:textColor="#fff"
+
+        />
+
+
+
+    <EditText
+
+        android:layout_centerInParent="true"
+        android:id="@+id/createAccount_MobileEdittextid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Your Mobile Number"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_bg"
+        android:padding="10dp"
+        android:textColor="#013705"
+        android:textColorHint="#013705"
+
+    android:visibility="gone"
+
+
+        />
+    <EditText
+
+        android:layout_below="@+id/createAccount_MobileEdittextid"
+        android:layout_centerInParent="true"
+        android:id="@+id/createAccount_PasswordEdittextid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:hint="Enter Your Password"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:background="@drawable/edit_text_bg"
+        android:padding="10dp"
+        android:textColor="#013705"
+        android:textColorHint="#013705"
+        android:layout_marginTop="20dp"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/createAccount_createButtonid"
+        android:background="@drawable/buttonbackground"
+        android:layout_below="@+id/createAccount_PasswordEdittextid"
+        android:layout_marginTop="25dp"
+        android:layout_centerInParent="true"
+        android:text="Create"
+        android:textColor="#fff"
+        android:visibility="gone"
+        />
+
+
+
+
+</RelativeLayout>
