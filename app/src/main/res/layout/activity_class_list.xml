@@ -9,14 +9,16 @@
 
 
     <include
-        android:id="@+id/classlist_Toolbarid"
-        layout="@layout/custom_actionbar"/>
+        layout="@layout/custom_actionbar"
+        android:id="@+id/classlist1_Toolbarid"
+
+        />
 
 
     <Spinner
+        android:layout_below="@+id/classlist1_Toolbarid"
         android:layout_marginTop="5dp"
-        android:layout_below="@+id/classlist_Toolbarid"
-        android:id="@+id/classList_SpinnerId"
+     android:id="@+id/classList_SpinnerId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"

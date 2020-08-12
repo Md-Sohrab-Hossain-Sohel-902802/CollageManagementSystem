@@ -35,6 +35,7 @@ public class StudenListActivity extends AppCompatActivity {
     private DatabaseReference databaseReference;
 
     private StudentListAdapter adapter;
+
     private  Toolbar toolbar;
 
 
@@ -45,8 +46,7 @@ public class StudenListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_studen_list);
 
 
-
-        toolbar=findViewById(R.id.studentList_Toolbarid);
+        toolbar=findViewById(R.id.studentLIst_Toolbarid);
         setSupportActionBar(toolbar);
 
 

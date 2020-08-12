@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.TextView;
 
 
 import com.example.collagemanagementsystem.Classes.Present;
@@ -31,10 +32,13 @@ public class PresentListActivity extends AppCompatActivity {
     private  DatabaseReference databaseReference;
     private PresentListAdapter adapter;
     private  List<Present> presentList=new ArrayList<>();
-
-    private  Toolbar toolbar;
     private FirebaseAuth mAuth;
     private String currentUser;
+    private  TextView presentDetailsTextview;
+
+    public int totalCounter=0,presentCounter=0,absentcounter=0;
+
+    private  Toolbar toolbar;
 
 
 
@@ -43,15 +47,16 @@ public class PresentListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_present_list);
 
+
+        toolbar=findViewById(R.id.presentLIstToolbarid);
+        setSupportActionBar(toolbar);
+
+
         roll=getIntent().getStringExtra("roll");
         name=getIntent().getStringExtra("name");
         department=getIntent().getStringExtra("departmentname");
         classname=getIntent().getStringExtra("classname");
         subjectname=getIntent().getStringExtra("subjectname");
-
-
-        toolbar=findViewById(R.id.presentLIst_ToolbarId);
-        setSupportActionBar(toolbar);
 
         this.setTitle(name+"("+roll+")");
 
@@ -65,12 +70,13 @@ public class PresentListActivity extends AppCompatActivity {
         .child(classname);
 
         recyclerView=findViewById(R.id.presentList_RecyclerViewid);
+        presentDetailsTextview=findViewById(R.id.presentDetailstTextviewid);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
 
-        adapter=new PresentListAdapter(this,presentList);
+        adapter=new PresentListAdapter(this,PresentListActivity.this,presentList,roll,department,classname,subjectname);
         recyclerView.setAdapter(adapter);
 
 
@@ -98,6 +104,7 @@ public class PresentListActivity extends AppCompatActivity {
 
                             for (DataSnapshot snapshot1: snapshot.getChildren()){
 
+                                totalCounter++;
 
 
                                 String roll=snapshot1.child("roll").getValue().toString();
@@ -107,6 +114,11 @@ public class PresentListActivity extends AppCompatActivity {
                                 String presentance=snapshot1.child("presentance").getValue().toString();
                                 String subjectName=snapshot1.child("subjectName").getValue().toString();
 
+                                if(presentance.equals("present")){
+                                    presentCounter++;
+                                }else if(presentance.equals("absent")){
+                                    absentcounter++;
+                                }
 
 
                                 Present present=new Present(date,key,roll,time,presentance,subjectName);
@@ -116,6 +128,12 @@ public class PresentListActivity extends AppCompatActivity {
 
 
                             }
+
+
+                            presentDetailsTextview.setText(name+": \nTotal  Class : "+totalCounter+"\nPresent: "+presentCounter+"              Absent : "+absentcounter);
+
+
+
                     }
 
                     @Override

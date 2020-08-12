@@ -12,18 +12,17 @@
     tools:context=".Admin.AdminStudentListActivity">
 
 
-
     <include
-        android:id="@+id/adminstudentList_Toolbarid"
-        layout="@layout/custom_actionbar"/>
-
+        layout="@layout/custom_actionbar"
+        android:id="@+id/admin_studentLIstToolbarid"
+        />
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/admin_studentLIstToolbarid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/adminstudentList_Toolbarid"
-        android:layout_marginTop="10dp"
+     android:layout_marginTop="10dp"
         android:id="@+id/admin_studentListRecyclerviewid"
         />
 

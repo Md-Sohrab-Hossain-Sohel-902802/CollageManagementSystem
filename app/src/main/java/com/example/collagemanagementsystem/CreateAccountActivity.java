@@ -159,9 +159,10 @@ public class CreateAccountActivity extends AppCompatActivity {
                     userdatalist.put("mobile", mobile);
                     userdatalist.put("fName", firstName);
                     userdatalist.put("lName", lastName);
+                    userdatalist.put("uid", mAuth.getCurrentUser().getUid());
 
 
-                    mRootref.child("Users").child(mRootref.push().getKey()).setValue(userdatalist).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    mRootref.child("Users").child(mAuth.getCurrentUser().getUid()).setValue(userdatalist).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){

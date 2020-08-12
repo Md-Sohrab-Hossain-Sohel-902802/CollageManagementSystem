@@ -64,7 +64,6 @@ public class ClassListActivity extends AppCompatActivity {
     String selectedDepartmentName;
     private  Button addButton;
     private  RecyclerView recyclerView;
-    private Toolbar toolbar;
 
 
     private  boolean isFirstSelection=true;
@@ -87,6 +86,8 @@ public class ClassListActivity extends AppCompatActivity {
 
 
 
+    private Toolbar toolbar;
+
 
 
     @Override
@@ -95,16 +96,17 @@ public class ClassListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_class_list);
 
 
+        toolbar=findViewById(R.id.classlist1_Toolbarid);
+        setSupportActionBar(toolbar);
+
         mAuth=FirebaseAuth.getInstance();
 
         sideWork=new SideWork();
 
 
-        toolbar=findViewById(R.id.classlist_Toolbarid);
-        setSupportActionBar(toolbar);
-
         selectedDepartmentName=getIntent().getStringExtra("sname");
         databaseReference= FirebaseDatabase.getInstance().getReference().child("collage");
+
 
         currentUserid=mAuth.getCurrentUser().getUid();
 
@@ -117,46 +119,46 @@ public class ClassListActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-         adapter=new SpinnerAdapter(this,datalist);
+        adapter=new SpinnerAdapter(this,datalist);
 
 
 
 
-         classlistSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-             @Override
-             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        classlistSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                 if(isFirstSelection==true){
-                     isFirstSelection=false;
-                 }else{
-                     final classlist selecteditem=datalist.get(position);
+                if(isFirstSelection==true){
+                    isFirstSelection=false;
+                }else{
+                    final classlist selecteditem=datalist.get(position);
 
-                      selectedClassname=selecteditem.getName();
-                      addButton.setVisibility(View.VISIBLE);
-
-
+                    selectedClassname=selecteditem.getName();
+                    addButton.setVisibility(View.VISIBLE);
 
 
 
 
 
-                 }
 
 
-    }
+                }
 
-             @Override
-             public void onNothingSelected(AdapterView<?> parent) {
 
-             }
-         });
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                        subjectNameCustomDiolouge();
+                subjectNameCustomDiolouge();
 
 
 
@@ -181,7 +183,7 @@ public class ClassListActivity extends AppCompatActivity {
     }
 
 
-   @Override
+    @Override
     protected void onStart() {
         super.onStart();
 
@@ -189,7 +191,7 @@ public class ClassListActivity extends AppCompatActivity {
         //for showing Classlist into spinner;
 
 
-       sideWork.showProgressdiolouge(ClassListActivity.this,"Please Wait","Loading");
+        sideWork.showProgressdiolouge(ClassListActivity.this,"Please Wait","Loading");
 
 
         databaseReference.child("classlist").child(selectedDepartmentName).addValueEventListener(new ValueEventListener() {
@@ -206,7 +208,7 @@ public class ClassListActivity extends AppCompatActivity {
                     datalist.add(classlist);
 
 
-               }
+                }
                 classlistSpinner.setAdapter(adapter);
                 sideWork.dismissProgressdiolouge();
             }
@@ -218,63 +220,58 @@ public class ClassListActivity extends AppCompatActivity {
         });
 
 
-       FirebaseRecyclerOptions<TeacherClasslist> options=new FirebaseRecyclerOptions.Builder<TeacherClasslist>()
-        .setQuery(      databaseReference.child(currentUserid).child("myclasslist")
-                .child(selectedDepartmentName),TeacherClasslist.class)
-               .build();
+        FirebaseRecyclerOptions<TeacherClasslist> options=new FirebaseRecyclerOptions.Builder<TeacherClasslist>()
+                .setQuery(      databaseReference.child(currentUserid).child("myclasslist")
+                        .child(selectedDepartmentName),TeacherClasslist.class)
+                .build();
 
 
 
 
-       FirebaseRecyclerAdapter<TeacherClasslist,MClassListViewHolder> adapter=new FirebaseRecyclerAdapter<TeacherClasslist, MClassListViewHolder>(options) {
-           @Override
-           protected void onBindViewHolder(@NonNull MClassListViewHolder holder, int position, @NonNull final TeacherClasslist classlist) {
+        FirebaseRecyclerAdapter<TeacherClasslist,MClassListViewHolder> adapter=new FirebaseRecyclerAdapter<TeacherClasslist, MClassListViewHolder>(options) {
+            @Override
+            protected void onBindViewHolder(@NonNull MClassListViewHolder holder, int position, @NonNull final TeacherClasslist classlist) {
 
-               holder.classnameTextview.setText(classlist.getClassname());
-               holder.subjectnameTextview.setText(classlist.getSubjectName());
-
-
-               holder.itemView.setOnClickListener(new View.OnClickListener() {
-                   @Override
-                   public void onClick(View v) {
-                       Intent intent=new Intent(ClassListActivity.this,StudenListActivity.class);
-                       intent.putExtra("classname",classlist.getClassname());
-                       intent.putExtra("subjectname",classlist.getSubjectName());
-                       intent.putExtra("departmentname",selectedDepartmentName);
-                       startActivity(intent);
-                   }
-               });
+                holder.classnameTextview.setText(classlist.getClassname());
+                holder.subjectnameTextview.setText(classlist.getSubjectName());
 
 
-           }
-
-           @NonNull
-           @Override
-           public MClassListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
-               View view=LayoutInflater.from(classlistSpinner.getContext()).inflate(R.layout.teacher_class_list_itemlayoute, classlistSpinner, false);
-
-               return new MClassListViewHolder(view);
-           }
-       };
-
-
-       recyclerView.setAdapter(adapter);
-       adapter.startListening();
+                holder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent=new Intent(ClassListActivity.this,StudenListActivity.class);
+                        intent.putExtra("classname",classlist.getClassname());
+                        intent.putExtra("subjectname",classlist.getSubjectName());
+                        intent.putExtra("departmentname",selectedDepartmentName);
+                        startActivity(intent);
+                    }
+                });
 
 
+            }
+
+            @NonNull
+            @Override
+            public MClassListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
+                View view=LayoutInflater.from(classlistSpinner.getContext()).inflate(R.layout.teacher_class_list_itemlayoute, classlistSpinner, false);
+
+                return new MClassListViewHolder(view);
+            }
+        };
 
 
-
-
-
-
+        recyclerView.setAdapter(adapter);
+        adapter.startListening();
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+
+
         getMenuInflater().inflate(R.menu.admin_classlist_menu,menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -283,21 +280,15 @@ public class ClassListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
 
-
-
         if(item.getItemId()==R.id.classlistMenu_AddButtonid){
-            classlistSpinner.setVisibility(View.VISIBLE);
-        }
 
-
-
+                classlistSpinner.setVisibility(View.VISIBLE);
+       }
 
 
 
         return super.onOptionsItemSelected(item);
     }
-
-
 
 
 

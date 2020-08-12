@@ -42,9 +42,6 @@ public class AdminClassList extends AppCompatActivity {
 
 
     private RecyclerView recyclerView;
-
-    private  Toolbar toolbar;
-
     private  DatabaseReference databaseReference;
     private  String selectedItemname;
 
@@ -59,6 +56,7 @@ public class AdminClassList extends AppCompatActivity {
 
     String fromWhere;
 
+    private  Toolbar toolbar;
 
 
 
@@ -73,19 +71,17 @@ public class AdminClassList extends AppCompatActivity {
         selectedItemname=getIntent().getStringExtra("sname");
         fromWhere=getIntent().getStringExtra("from");
 
-        if(fromWhere.equals("mngclasslist")){
-            toolbar=findViewById(R.id.adminclasslsitToolbarid);
-
+      if(fromWhere.equals("mngclasslist")){
+         toolbar=findViewById(R.id.admin_ClasslistToolbarid);
             setSupportActionBar(toolbar);
 
         }else if(     fromWhere.equals("managestudent")){
-            toolbar=findViewById(R.id.adminclasslsitToolbarid);
-            toolbar.setVisibility(View.GONE);
+
         }
 
 
 
-        this.setTitle(""+selectedItemname);
+       this.setTitle(""+selectedItemname);
 
         databaseReference= FirebaseDatabase.getInstance().getReference().child("collage").child("classlist");
 
@@ -107,11 +103,10 @@ public class AdminClassList extends AppCompatActivity {
 
 
 
-
     }
 
 
-    @Override
+ @Override
     protected void onStart() {
         super.onStart();
 
@@ -447,7 +442,6 @@ public class AdminClassList extends AppCompatActivity {
 
         }
     }
-
 
 
 

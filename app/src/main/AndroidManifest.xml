@@ -10,16 +10,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PresentListActivity"></activity>
+        <activity android:name=".AllUserActivity"></activity>
+        <activity android:name=".UserProfileActivity" />
+        <activity android:name=".Admin.AdminClassList" />
+        <activity android:name=".PresentListActivity" />
         <activity android:name=".StudenListActivity" />
         <activity android:name=".Admin.AdminStudentListActivity" />
-        <activity android:name=".Admin.AdminClassList">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity android:name=".Admin.AdminDepartmentActivity" />
         <activity android:name=".Admin.AdminMainActivity" />
         <activity android:name=".AdminLoginActivity" />

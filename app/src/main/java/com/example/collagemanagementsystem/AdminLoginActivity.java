@@ -50,7 +50,7 @@ public class AdminLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_login);
 
-        databaseReference= FirebaseDatabase.getInstance().getReference().child("collage").child("Users").child("admin");
+        databaseReference= FirebaseDatabase.getInstance().getReference().child("collage").child("Admin");
 
 
         emailEdittext=findViewById(R.id.adlogin_emailEdittextid);

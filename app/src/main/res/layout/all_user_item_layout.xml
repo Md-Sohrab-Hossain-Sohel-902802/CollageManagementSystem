@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="20dp"
+    android:layout_marginTop="15dp"
+    android:layout_marginRight="25dp"
+    android:layout_marginLeft="25dp"
+    android:layout_height="wrap_content">
+
+
+    <RelativeLayout
+        android:id="@+id/card_View"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/allUser_profileImageviewid"
+                android:layout_width="280dp"
+                android:layout_height="220dp"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/profile"
+                android:layout_marginTop="15dp"
+
+
+                />
+
+
+        <TextView
+            android:id="@+id/allUser_NameTextviewid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="User Name"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:layout_below="@+id/allUser_profileImageviewid"
+            android:layout_marginTop="5dp"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/allUser_sendMessageButtonid"
+            android:layout_below="@+id/allUser_NameTextviewid"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="79dp"
+            android:layout_marginRight="79dp"
+            android:padding="5dp"
+            android:background="@color/colorPrimary"
+            android:textColor="@android:color/white"
+            android:text="Send Message"
+            android:textAllCaps="false"
+            android:textSize="17sp"
+            />
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

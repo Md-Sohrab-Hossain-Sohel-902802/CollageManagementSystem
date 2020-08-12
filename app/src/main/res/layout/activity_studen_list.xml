@@ -8,16 +8,15 @@
     tools:context=".StudenListActivity">
 
 
-
     <include
-        android:id="@+id/studentList_Toolbarid"
-
-        layout="@layout/custom_actionbar"/>
+        layout="@layout/custom_actionbar"
+        android:id="@+id/studentLIst_Toolbarid"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/studentList_Toolbarid"
-        android:layout_width="match_parent"
+     android:layout_width="match_parent"
+        android:layout_below="@+id/studentLIst_Toolbarid"
         android:layout_height="match_parent"
         android:id="@+id/studentLIst_Recycclerviewid"
         />

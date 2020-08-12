@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import com.example.collagemanagementsystem.MainActivity;
 import com.example.collagemanagementsystem.R;
 
 public class AdminMainActivity extends AppCompatActivity {

@@ -9,12 +9,30 @@
     android:layout_height="match_parent"
     tools:context=".PresentListActivity">
 
+
     <include
-        android:id="@+id/presentLIst_ToolbarId"
-        layout="@layout/custom_actionbar"/>
+        layout="@layout/custom_actionbar"
+        android:id="@+id/presentLIstToolbarid"
+        />
+
+
+
+    <TextView
+        android:layout_below="@+id/presentLIstToolbarid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/presentDetailstTextviewid"
+        android:text="md sohrab Hossain Sohel"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:padding="10dp"
+        android:textColor="#fff"
+        android:background="@drawable/student_list_bg"
+        android:layout_marginTop="10dp"
+      />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@+id/presentLIst_ToolbarId"
+        android:layout_below="@+id/presentDetailstTextviewid"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/presentList_RecyclerViewid"

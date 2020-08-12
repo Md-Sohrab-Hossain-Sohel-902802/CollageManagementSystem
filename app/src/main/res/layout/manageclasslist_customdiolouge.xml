@@ -23,7 +23,7 @@
             android:id="@+id/classlistDiolouge_tilteTextviewid"
 
             android:text="Md Sohrab Hossain Sohel"
-            android:textSize="28sp"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="@android:color/white"
             />
@@ -38,11 +38,11 @@
             android:layout_below="@+id/classlistDiolouge_tilteTextviewid"
             android:background="@drawable/buttonbackground"
             android:hint="Enter Your Classname"
-            android:textSize="18sp"
+            android:textSize="17sp"
             android:textColor="#fff"
             android:textColorHint="#fff"
-            android:padding="15dp"
-            android:layout_marginTop="25dp"
+            android:padding="5dp"
+            android:layout_marginTop="12dp"
             />
 
 
@@ -53,12 +53,12 @@
 
             android:layout_below="@+id/classlistDiolouge_ClassnameEdittextid"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="7dp"
             android:background="@drawable/edit_text_bg"
 
             android:text="Ok"
             android:textColor="#000"
-            android:textSize="20sp"
+            android:textSize="18sp"
             android:id="@+id/classlistDiolouge_OkButtonid"
 
             />

@@ -40,8 +40,6 @@ public class AdminStudentListActivity extends AppCompatActivity {
 
 
     private  RecyclerView recyclerView;
-    private  Toolbar toolbar;
-
 
 
 
@@ -56,6 +54,7 @@ public class AdminStudentListActivity extends AppCompatActivity {
     private  EditText studentNameEdittext,rollEditext;
     private  Button saveButton;
     private  String name,email;
+    private  Toolbar toolbar;
 
 
 
@@ -65,12 +64,13 @@ public class AdminStudentListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_admin_student_list);
 
 
+
+        toolbar=findViewById(R.id.admin_studentLIstToolbarid);
+        setSupportActionBar(toolbar);
+
+
         className=getIntent().getStringExtra("className");
         departmentName=getIntent().getStringExtra("department");
-
-        toolbar=findViewById(R.id.adminstudentList_Toolbarid);
-
-        setSupportActionBar(toolbar);
 
 
         this.setTitle(""+className);
