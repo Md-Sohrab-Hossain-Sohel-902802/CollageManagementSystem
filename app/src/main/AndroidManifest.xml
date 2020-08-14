@@ -10,7 +10,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AllUserActivity"></activity>
+        <activity android:name=".ChatActivity"
+
+            android:parentActivityName=".AllUserActivity"
+            ></activity>
+        <activity android:name=".AllUserActivity" />
         <activity android:name=".UserProfileActivity" />
         <activity android:name=".Admin.AdminClassList" />
         <activity android:name=".PresentListActivity" />

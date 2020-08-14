@@ -20,10 +20,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/buttonbackground"
         android:padding="10dp"
-        android:textColor="#013705"
-        android:textColorHint="#013705"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
 
 
 
@@ -40,10 +40,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/buttonbackground"
         android:padding="10dp"
-        android:textColor="#013705"
-        android:textColorHint="#013705"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
         android:layout_marginTop="20dp"
 
         />
@@ -54,14 +54,14 @@
         android:id="@+id/createAccount_lastnameEdittextid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter Your First Name"
+        android:hint="Enter Your Last Name"
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/buttonbackground"
         android:padding="10dp"
-        android:textColor="#013705"
-        android:textColorHint="#013705"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
         android:layout_marginTop="20dp"
 
         />
@@ -92,10 +92,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/buttonbackground"
         android:padding="10dp"
-        android:textColor="#013705"
-        android:textColorHint="#013705"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
 
     android:visibility="gone"
 
@@ -113,10 +113,10 @@
         android:textSize="20sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        android:background="@drawable/edit_text_bg"
+        android:background="@drawable/buttonbackground"
         android:padding="10dp"
-        android:textColor="#013705"
-        android:textColorHint="#013705"
+        android:textColor="#fff"
+        android:textColorHint="#fff"
         android:layout_marginTop="20dp"
         android:visibility="gone"
         />

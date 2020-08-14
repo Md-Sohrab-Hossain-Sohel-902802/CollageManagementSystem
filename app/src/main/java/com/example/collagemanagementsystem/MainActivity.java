@@ -108,14 +108,14 @@ public class MainActivity extends AppCompatActivity  implements NavigationView.O
        String image= sideWork.getImage(this);
        String name= sideWork.getName(this);
 
-       if(image.equals("null")){
+      if(image.equals("null") && mAuth.getCurrentUser()!=null){
            setProfileData(userNameTExtview,profileImageView);
        }else{
            Picasso.get().load(image).placeholder(R.drawable.profile).into(profileImageView);
 
        }
 
-       if(name.equals("null")){
+       if(name.equals("null") && mAuth.getCurrentUser()!=null){
            setProfileData(userNameTExtview,profileImageView);
        }else{
            userNameTExtview.setText(name);

@@ -76,6 +76,11 @@ public class UserProfileActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
         mAuth=FirebaseAuth.getInstance();
         databaseReference= FirebaseDatabase.getInstance().getReference().child("collage");
         storageReference= FirebaseStorage.getInstance().getReference().child("collage").child("ProfileImage");
