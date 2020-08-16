@@ -3,13 +3,19 @@ package com.example.collagemanagementsystem.Admin;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.collagemanagementsystem.ClassListActivity;
+import com.example.collagemanagementsystem.Classes.DepartmentList;
 import com.example.collagemanagementsystem.R;
+import com.example.collagemanagementsystem.sqlite.DepartmentDatabase;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminDepartmentActivity extends AppCompatActivity {
 
@@ -19,9 +25,8 @@ public class AdminDepartmentActivity extends AppCompatActivity {
 
     private  AdminMainListAdapter adminMainListAdapter;
 
-    private  String[] texts={"Computer","Electrical","Civil","Mechanical","Power","Electro-medical"};
 
-
+    private  List<DepartmentList> departmentLists=new ArrayList<>();
     String data;
 
     @Override
@@ -34,7 +39,7 @@ public class AdminDepartmentActivity extends AppCompatActivity {
 
 
         listView=findViewById(R.id.adminDepartmentListviewid);
-        adminMainListAdapter=new AdminMainListAdapter(this,texts);
+        adminMainListAdapter=new AdminMainListAdapter(this,departmentLists);
 
 
         listView.setAdapter(adminMainListAdapter);
@@ -46,24 +51,24 @@ public class AdminDepartmentActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                    String selecteditem=texts[position];
+                    DepartmentList selecteditem=departmentLists.get(position);
 
 
                     if(data.equals("admain")){
                         Intent intent=new Intent(AdminDepartmentActivity.this,AdminClassList.class);
-                        intent.putExtra("sname",selecteditem);
+                        intent.putExtra("sname",selecteditem.getDepartment());
                         intent.putExtra("from","mngclasslist");
                         startActivity(intent);
                     }
                     else if(data.equals("main")){
                         Intent intent=new Intent(AdminDepartmentActivity.this, ClassListActivity.class);
-                        intent.putExtra("sname",selecteditem);
+                        intent.putExtra("sname",selecteditem.getDepartment());
                         startActivity(intent);
                     }
         else if(data.equals("formanagestudent")){
                         Intent intent=new Intent(AdminDepartmentActivity.this, AdminClassList.class);
                        intent.putExtra("from","managestudent");
-                        intent.putExtra("sname",selecteditem);
+                        intent.putExtra("sname",selecteditem.getDepartment());
                         startActivity(intent);
                     }
 
@@ -80,6 +85,36 @@ public class AdminDepartmentActivity extends AppCompatActivity {
 
 
 
+
+
+
+
+
+
+
+    }
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+
+        DepartmentDatabase dataAccess = DepartmentDatabase.getInstance(AdminDepartmentActivity.this);
+        dataAccess.open();
+
+        Cursor cursor = dataAccess.getAllDepartmentList();
+        if (cursor.getCount() != 0) {
+            departmentLists.clear();
+            while (cursor.moveToNext()) {
+               String  serial = cursor.getString(0);
+                String name = cursor.getString(1);
+                DepartmentList dtList = new DepartmentList(serial,name);
+                departmentLists.add(dtList);
+                adminMainListAdapter.notifyDataSetChanged();
+
+            }
+        }
 
 
 

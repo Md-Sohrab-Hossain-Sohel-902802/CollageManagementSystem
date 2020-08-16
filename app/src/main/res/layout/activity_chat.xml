@@ -29,7 +29,7 @@
 
     <RelativeLayout
         android:orientation="horizontal"
-        android:background="@drawable/buttonbackground"
+        android:background="#000"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
         android:id="@+id/chatLinearLayout"
@@ -40,6 +40,8 @@
 
 
         <ImageButton
+            android:tint="#FA3C4C"
+            android:background="#000"
             android:layout_marginLeft="2dp"
             android:layout_width="52dp"
             android:layout_height="50dp"
@@ -49,16 +51,18 @@
             />
 
 
-
         <EditText
             android:id="@+id/input_message"
-            android:hint="Aa"
-            android:padding="15dp"
             android:layout_width="match_parent"
-            android:maxLines="5"
+            android:layout_height="wrap_content"
             android:layout_toStartOf="@+id/send_message_btn"
             android:layout_toEndOf="@+id/send_files_btn"
-            android:layout_height="wrap_content"/>
+            android:fontFamily="@font/allan"
+            android:hint="Aa"
+            android:maxLines="5"
+            android:background="#000"
+            android:padding="15dp"
+            android:textColor="#ffffff" />
 
 
 
@@ -70,8 +74,10 @@
             android:padding="15dp"
             android:src="@drawable/send_message"
             android:layout_alignParentEnd="true"
-            android:background="#FA3C4C"
-            />
+            android:tint="#FA3C4C"
+            android:background="#000"
+
+      />
     </RelativeLayout>
 
 

@@ -7,24 +7,28 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.collagemanagementsystem.Classes.DepartmentList;
 import com.example.collagemanagementsystem.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class AdminMainListAdapter extends BaseAdapter {
 
 
 
     private  Context context;
-    private String[]  texts;
+    private List<DepartmentList> departmentLists=new ArrayList<>();
 
 
-    public AdminMainListAdapter(Context context, String[] texts) {
+    public AdminMainListAdapter(Context context, List<DepartmentList> departmentLists) {
         this.context = context;
-        this.texts = texts;
+        this.departmentLists = departmentLists;
     }
 
     @Override
     public int getCount() {
-        return texts.length;
+        return departmentLists.size();
     }
 
     @Override
@@ -51,7 +55,9 @@ public class AdminMainListAdapter extends BaseAdapter {
 
 
             TextView textView=convertView.findViewById(R.id.admain_list_Textviewid);
-            textView.setText(texts[position]);
+            DepartmentList selectedItem=departmentLists.get(position);
+
+            textView.setText(selectedItem.getDepartment());
 
 
 

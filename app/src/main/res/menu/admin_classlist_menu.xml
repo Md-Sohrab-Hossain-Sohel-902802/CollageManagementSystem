@@ -5,6 +5,7 @@
 
     <item
         android:title="Add"
+        app:showAsAction="always"
         android:id="@+id/classlistMenu_AddButtonid"
         />
 

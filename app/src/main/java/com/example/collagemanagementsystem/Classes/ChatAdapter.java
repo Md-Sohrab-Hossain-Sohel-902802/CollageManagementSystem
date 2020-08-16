@@ -93,13 +93,35 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatAdapter.MyViewHolder> 
         holder.messageSenderPicture.setVisibility(View.GONE);
         holder.messageReceiverPicture.setVisibility(View.GONE);
         holder.receiverMessageTime.setVisibility(View.GONE);
+        holder.senderMessageTime.setVisibility(View.GONE);
 
 if(messageType.equals("text")){
     if(fromUserid.equals(onlineUserid)){
         holder.senderMessageTExt.setVisibility(View.VISIBLE);
         holder.senderMessageTExt.setBackgroundResource(R.drawable.sender_messages_layout);
         holder.senderMessageTExt.setText(selecteditem.getMessage());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                counter++;
+                if(counter%2==0){
 
+
+                    if(holder.receiverMessageTime.getVisibility()==View.VISIBLE || holder.senderMessageTime.getVisibility()==View.VISIBLE){
+                        holder.receiverMessageTime.setVisibility(View.GONE);
+                        holder.senderMessageTime.setVisibility(View.GONE);
+                    }else {
+
+
+                        holder.senderMessageTime.setVisibility(View.VISIBLE);
+                        holder.senderMessageTime.setText(selecteditem.getDate() + "  At: " + selecteditem.getTime());
+                    }
+                      }else{
+                    holder.senderMessageTime.setVisibility(View.GONE);
+                }
+
+            }
+        });
 
     }else{
 
@@ -118,7 +140,7 @@ if(messageType.equals("text")){
                 if(counter%2==0){
 
                     holder.receiverMessageTime.setVisibility(View.VISIBLE);
-                    holder.receiverMessageTime.setText(selecteditem.getTime());
+                    holder.receiverMessageTime.setText(selecteditem.getDate()+"  At: "+selecteditem.getTime());
                 }else{
                     holder.receiverMessageTime.setVisibility(View.GONE);
                 }
@@ -167,6 +189,7 @@ if(messageType.equals("text")){
         public CircleImageView reciverProfileImage;
         public ImageView messageSenderPicture,messageReceiverPicture;
         public TextView receiverMessageTime;
+        public TextView senderMessageTime;
 
 
 
@@ -181,6 +204,7 @@ if(messageType.equals("text")){
             messageReceiverPicture=itemView.findViewById(R.id.message_receiver_Imageview);
             messageSenderPicture=itemView.findViewById(R.id.message_sender_Imageview);
             receiverMessageTime=itemView.findViewById(R.id.receiver_message_Time);
+            senderMessageTime=itemView.findViewById(R.id.sender_message_Time);
 
 
 

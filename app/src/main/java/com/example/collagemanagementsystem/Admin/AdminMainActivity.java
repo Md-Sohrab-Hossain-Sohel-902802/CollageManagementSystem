@@ -7,18 +7,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Spinner;
 
+import com.example.collagemanagementsystem.Classes.MainAdapter;
 import com.example.collagemanagementsystem.R;
+import com.example.collagemanagementsystem.TeacherListActivity;
 
 public class AdminMainActivity extends AppCompatActivity {
 
 
     private ListView listView;
 
-    private  String[] texts={"Manage Class list","Manage  Student"};
+    private  String[] texts={"Manage Class list","Manage  Student","Manage Teacher","Create Class Routine"};
 
 
-    AdminMainListAdapter adminMainListAdapter;
+    MainAdapter adminMainListAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,7 @@ public class AdminMainActivity extends AppCompatActivity {
 
 
 
-        adminMainListAdapter=new AdminMainListAdapter(this,texts);
+        adminMainListAdapter=new MainAdapter(this,texts);
         listView.setAdapter(adminMainListAdapter);
 
 
@@ -54,6 +57,10 @@ public class AdminMainActivity extends AppCompatActivity {
                     Intent intent=new Intent(AdminMainActivity.this,AdminDepartmentActivity.class);
                     intent.putExtra("activity","formanagestudent");
                     startActivity(intent);
+                }else if(position==2){
+                    startActivity(new Intent(AdminMainActivity.this, TeacherListActivity.class));
+                }else if(position==3){
+                    startActivity(new Intent(AdminMainActivity.this, AdminCreateClassRoutineActivity.class));
                 }
 
 

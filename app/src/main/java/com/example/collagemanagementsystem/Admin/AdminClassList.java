@@ -16,14 +16,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.collagemanagementsystem.Admin.Classes.ClassList;
+import com.example.collagemanagementsystem.Classes.DepartmentList;
+import com.example.collagemanagementsystem.Classes.MainAdapter;
+import com.example.collagemanagementsystem.Classes.SideWork;
+import com.example.collagemanagementsystem.Classes.SpinnerListAdapter;
 import com.example.collagemanagementsystem.R;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -35,6 +41,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.HashMap;
 
 public class AdminClassList extends AppCompatActivity {
@@ -57,6 +67,33 @@ public class AdminClassList extends AppCompatActivity {
     String fromWhere;
 
     private  Toolbar toolbar;
+
+    //<M------------------------For Custom Diolouge----------------------------------->
+
+        private Spinner sessionSpinner,groupSpinner,shiftSpinner;
+
+        private  Button addclassSaveButton;
+
+
+
+
+        private  boolean isFirstsessionselected=true;
+        private  boolean isFirstgroupselected=true;
+        private  boolean isFirstshiftselected=true;
+
+
+    String selectedSession="null";
+    String selectedGroup="null";
+    String selectedShift="null";
+
+
+
+
+
+
+
+
+
 
 
 
@@ -119,13 +156,12 @@ public class AdminClassList extends AppCompatActivity {
             @Override
             protected void onBindViewHolder(@NonNull ClassListViewHolder holder, int position, @NonNull final ClassList datalist) {
 
-                holder.textView.setText(datalist.getName());
+                holder.textView.setText("Department: "+datalist.getDepartment()+"\n  "+" Group : "+datalist.getGroup()+"\nShift : "+datalist.getShift()+"\nSession : "+datalist.getSession());
 
 
 
 
-
-                holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+    holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
                     public boolean onLongClick(View v) {
 
@@ -150,8 +186,7 @@ public class AdminClassList extends AppCompatActivity {
                             startActivity(intent);
 
                       }else if(fromWhere.equals("mngclasslist")){
-                          Toast.makeText(AdminClassList.this, "click", Toast.LENGTH_SHORT).show();
-                      }
+                        }
                     }
                 });
 
@@ -194,27 +229,24 @@ public class AdminClassList extends AppCompatActivity {
 
 
         CharSequence options[]=new CharSequence[]{
-                "Update",
                 "Delete"
         };
 
 
 
-        AlertDialog.Builder builder=new AlertDialog.Builder(AdminClassList.this);
+        final AlertDialog.Builder builder=new AlertDialog.Builder(AdminClassList.this);
         builder.setTitle("Choose An Options");
         builder.setItems(options, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 if(which==0){
-                    updateCustomDiolouge("Update Class Name",selectedItems);
-
-                }else if(which==1){
                     databaseReference.child(selectedItemname)
                             .child(selectedItems).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
                             if(task.isSuccessful()){
-                                Toast.makeText(AdminClassList.this, "Succesfully Deleted", Toast.LENGTH_SHORT).show();
+
+                                Toast.makeText(AdminClassList.this, "Successfully Deleted", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -303,7 +335,7 @@ public class AdminClassList extends AppCompatActivity {
 
 
         if(item.getItemId()==R.id.classlistMenu_AddButtonid){
-                        showcustomdioloage("Add New Class");
+                        showcustomdioloage();
         }
 
 
@@ -315,39 +347,193 @@ public class AdminClassList extends AppCompatActivity {
 
 
 
-    public void showcustomdioloage(String title){
-        AlertDialog.Builder builder=new AlertDialog.Builder(AdminClassList.this);
-        View view=getLayoutInflater().inflate(R.layout.manageclasslist_customdiolouge,null);
+    public void showcustomdioloage() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(AdminClassList.this);
+        View view = getLayoutInflater().inflate(R.layout.admin_add_class_diolouge, null);
         builder.setView(view);
-        diolougeClassNameEdittext=view.findViewById(R.id.classlistDiolouge_ClassnameEdittextid);
-        diolougeOkButtonid=view.findViewById(R.id.classlistDiolouge_OkButtonid);
-        diolougeTextviewid=view.findViewById(R.id.classlistDiolouge_tilteTextviewid);
 
-        diolougeTextviewid.setText(title);
+        addclassSaveButton = view.findViewById(R.id.addclass_SaveButtonid);
+        sessionSpinner = view.findViewById(R.id.addClass_SessionSpinnerid);
+        groupSpinner = view.findViewById(R.id.addClass_GroupSpinnerid);
+        shiftSpinner = view.findViewById(R.id.addClass_ShiftSpinnerid);
 
 
-        final AlertDialog dialog=builder.create();
+        final String[] session = {"Select One","2015-2016", "2016-2017", "2017-2018", "2018-2019", "2019-2020", "2020-2021"};
+        final String[] groups = {"Select One","A", "B"};
+        final String[] shifts = {"Select One","First", "Second"};
+
+
+        SpinnerListAdapter sessionAdapter = new SpinnerListAdapter(AdminClassList.this, session);
+        SpinnerListAdapter groupAdapter = new SpinnerListAdapter(AdminClassList.this, groups);
+        SpinnerListAdapter shiftAdapter = new SpinnerListAdapter(AdminClassList.this, shifts);
+
+
+        sessionSpinner.setAdapter(sessionAdapter);
+        groupSpinner.setAdapter(groupAdapter);
+        shiftSpinner.setAdapter(shiftAdapter);
+
+
+        sessionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(isFirstsessionselected==true){
+                    isFirstsessionselected=false;
+                }else{
+                             selectedSession=session[position];
+                    }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        groupSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(isFirstgroupselected==true){
+                    isFirstgroupselected=false;
+                }else{
+                    selectedGroup=groups[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        shiftSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(isFirstshiftselected==true){
+                    isFirstshiftselected=false;
+                }else{
+                    selectedShift=shifts[position];
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+
+
+
+
+
+        final AlertDialog dialog = builder.create();
         dialog.show();
-        diolougeOkButtonid.setOnClickListener(new View.OnClickListener() {
+        addclassSaveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                String classname=diolougeClassNameEdittext.getText().toString();
 
+                    if(selectedSession.equals("null")){
+                        Toast.makeText(AdminClassList.this, "Please Select  Session", Toast.LENGTH_SHORT).show();
+                    }else if(selectedGroup.equals("null")){
+                        Toast.makeText(AdminClassList.this, "Please Select Group", Toast.LENGTH_SHORT).show();
+                    }else if(selectedShift.equals("null")){
+                        Toast.makeText(AdminClassList.this, "Please Select Shift", Toast.LENGTH_SHORT).show();
+                    }else{
 
-                if(classname.isEmpty()){
-                    diolougeClassNameEdittext.setError("Enter A Class Name Like(Computer 5cmtB2)");
-                    diolougeClassNameEdittext.requestFocus();
-                    return;
-                }
-                else{
-                    saveClassname(classname,diolougeClassNameEdittext);
-                }
+                        saveClassIntoDatabase(selectedItemname,selectedGroup,selectedSession,selectedShift);
+
+                   }
 
 
 
             }
+
         });
+
+    }
+
+    private void saveClassIntoDatabase(final String selectedItemname, final String selectedGroup, final String selectedSession, final String selectedShift) {
+
+
+
+     final String   makedClassname=selectedSession+selectedItemname+selectedGroup+selectedShift;
+
+
+        databaseReference.child(selectedItemname).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                if(snapshot.exists()) {
+
+                    if(snapshot.hasChild(makedClassname)){
+                        Toast.makeText(AdminClassList.this, "This Class is Already Exists", Toast.LENGTH_SHORT).show();
+                    }else if(!snapshot.hasChild(makedClassname)){
+                        HashMap<String, String>  classlisthashMap=new HashMap<>();
+                        classlisthashMap.put("name",makedClassname);
+                        classlisthashMap.put("key",makedClassname);
+                        classlisthashMap.put("department",selectedItemname);
+                        classlisthashMap.put("group",selectedGroup);
+                        classlisthashMap.put("shift",selectedShift);
+                        classlisthashMap.put("session",selectedSession);
+
+
+                        databaseReference.child(selectedItemname)
+                                .child(makedClassname)
+                                .setValue(classlisthashMap)
+                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if(task.isSuccessful()){
+                                            Toast.makeText(AdminClassList.this, "Data Saved Successfully", Toast.LENGTH_SHORT).show();
+                                        }
+                                    }
+                                });
+                    }
+                }
+
+                else{
+
+
+                    HashMap<String, String>  classlisthashMap=new HashMap<>();
+                    classlisthashMap.put("name",makedClassname);
+                    classlisthashMap.put("key",makedClassname);
+                    classlisthashMap.put("department",selectedItemname);
+                    classlisthashMap.put("group",selectedGroup);
+                    classlisthashMap.put("shift",selectedShift);
+                    classlisthashMap.put("session",selectedSession);
+
+
+                    databaseReference.child(selectedItemname)
+                            .child(makedClassname)
+                            .setValue(classlisthashMap)
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful()){
+                                        Toast.makeText(AdminClassList.this, "Data Saved Successfully", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+
     }
 
     private void saveClassname(final String classname, final EditText diolougeClassNameEdittext) {
@@ -364,9 +550,6 @@ public class AdminClassList extends AppCompatActivity {
                         Toast.makeText(AdminClassList.this, "This Class is Already Exists", Toast.LENGTH_SHORT).show();
                     }else if(!snapshot.hasChild(classname)){
                         HashMap<String, String>  classlisthashMap=new HashMap<>();
-
-
-
                         classlisthashMap.put("name",classname);
                         classlisthashMap.put("key",classname);
 

@@ -135,13 +135,6 @@ public class ClassListActivity extends AppCompatActivity {
 
                     selectedClassname=selecteditem.getName();
                     addButton.setVisibility(View.VISIBLE);
-
-
-
-
-
-
-
                 }
 
 

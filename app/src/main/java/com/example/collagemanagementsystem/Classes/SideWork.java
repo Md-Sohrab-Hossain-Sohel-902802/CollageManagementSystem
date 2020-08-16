@@ -8,6 +8,7 @@ import com.example.collagemanagementsystem.CollageManagement;
 
 public class SideWork {
     public          ProgressDialog progressDialog;
+    String shortcutdata;
 
 
     public  void showProgressdiolouge(Context context,String message, String title){
@@ -59,6 +60,32 @@ return  image;
     }
 
 
+
+    public String getShortcutforDp(String department){
+        if(department.equals("Computer")){
+            shortcutdata=  "CMT";
+
+        }else if(department.equals("Electrical")){
+                shortcutdata="EEE";
+        }else if(department.equals("Mechanical")){
+            shortcutdata="MC";
+        }else if(department.equals("Civil")){
+            shortcutdata="CV";
+        }
+        else if(department.equals("Power")){
+            shortcutdata="POW";
+        } else if(department.equals("Electronics")){
+            shortcutdata="ELE";
+        }else if(department.equals("Electromedical")){
+            shortcutdata="EME";
+        }
+
+
+
+
+        return  shortcutdata;
+
+    }
 
 
 
