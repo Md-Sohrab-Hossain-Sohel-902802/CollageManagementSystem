@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="15dp"
+    android:layout_marginBottom="14dp"
+    android:background="@drawable/buttonbackground"
+    >
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:id="@+id/teacherlist_circleImageviewid"
+           android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/profile"
+        android:layout_marginRight="15dp"
+        />
+
+    <TextView
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="7dp"
+        android:layout_toRightOf="@+id/teacherlist_circleImageviewid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="Md Sohrab Hossian Sohel"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/teacherlist_NameTextviewid"
+        />
+    <TextView
+        android:layout_toRightOf="@+id/teacherlist_circleImageviewid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="Md Sohrab Hossian Sohel"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@+id/teacherlist_NameTextviewid"
+       android:id="@+id/teacherlistDepartmentTextviewid"
+        />
+
+</RelativeLayout>

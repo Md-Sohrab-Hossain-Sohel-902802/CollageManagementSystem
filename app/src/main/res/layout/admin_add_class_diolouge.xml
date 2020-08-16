@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5dp"
+    android:background="#000000"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:text="Add new Class: "
+        android:id="@+id/text5"
+        android:textColor="#9EF68F"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="15dp"
+
+        />
+    <TextView
+        android:layout_below="@+id/text5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:text="Session: "
+        android:id="@+id/text4"
+        android:textColor="#9EF68F"
+        android:layout_marginRight="10dp"
+
+        />
+    <Spinner
+        android:layout_below="@+id/text5"
+        android:layout_toRightOf="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addClass_SessionSpinnerid"
+        android:backgroundTint="#fff"
+        />
+    <TextView
+
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/text4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:text="Group: "
+        android:id="@+id/text6"
+        android:textColor="#9EF68F"
+        android:layout_marginRight="10dp"
+
+        />
+    <Spinner
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/addClass_SessionSpinnerid"
+        android:layout_toRightOf="@+id/text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addClass_GroupSpinnerid"
+        android:backgroundTint="#fff"
+        />
+
+
+
+    <TextView
+
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/text6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="21sp"
+        android:textStyle="bold"
+        android:text="Shift: "
+        android:id="@+id/text7"
+        android:textColor="#9EF68F"
+        android:layout_marginRight="10dp"
+
+        />
+    <Spinner
+        android:layout_marginTop="25dp"
+        android:layout_below="@+id/addClass_GroupSpinnerid"
+        android:layout_toRightOf="@+id/text7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/addClass_ShiftSpinnerid"
+        android:backgroundTint="#fff"
+
+
+        />
+
+
+    <Button
+        android:layout_marginTop="35dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/addClass_ShiftSpinnerid"
+        android:textColor="#fff"
+        android:background="@drawable/buttonbackground"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:id="@+id/addclass_SaveButtonid"
+        />
+
+</RelativeLayout>

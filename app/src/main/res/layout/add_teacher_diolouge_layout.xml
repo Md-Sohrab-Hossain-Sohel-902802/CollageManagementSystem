@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#000"
+    android:padding="10dp"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+      android:textSize="22sp"
+        android:textStyle="bold"
+        android:text="Add New Teacher"
+        android:id="@+id/fastTExt"
+        android:layout_marginBottom="15dp"
+        android:textColor="#9EF68F"
+
+        />
+
+    <EditText
+        android:layout_below="@+id/fastTExt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/addTeacher_nameEdittext"
+        android:hint="Enter Teacher Name"
+        android:textColorHint="@android:color/white"
+        android:textSize="17sp"
+        android:textColor="#fff"
+        android:textStyle="bold|italic"
+        android:padding="10dp"
+        android:textAlignment="center"
+        android:background="@drawable/buttonbackground"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addTeacher_nameEdittext"
+        android:id="@+id/addTeacher_TeacherCodeEdittextid"
+        android:layout_marginTop="10dp"
+        android:hint="Enter Teacher   Code"
+        android:padding="10dp"
+        android:textColorHint="@android:color/white"
+        android:textSize="17sp"
+        android:textColor="#fff"
+        android:textStyle="bold|italic"
+        android:background="@drawable/buttonbackground"
+        android:textAlignment="center"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/addTeacher_TeacherCodeEdittextid"
+        android:id="@+id/addTeacher_TitleEdittextid"
+        android:layout_marginTop="10dp"
+        android:hint="Enter his title"
+        android:padding="10dp"
+        android:textColorHint="@android:color/white"
+        android:textSize="17sp"
+        android:textColor="#fff"
+        android:textStyle="bold|italic"
+        android:background="@drawable/buttonbackground"
+        android:textAlignment="center"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/addTeacher_TitleEdittextid"
+        android:textSize="19sp"
+        android:textStyle="bold"
+        android:text="Department: "
+        android:id="@+id/text1"
+        android:textColor="#9EF68F"
+
+        />
+
+    <Spinner
+        android:id="@+id/addTeacher_chooseDepartmentTitleSpinnerid"
+        android:backgroundTint="#fff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text1"
+        android:layout_marginLeft="50dp"
+        android:layout_marginBottom="10dp"
+        />
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/addTeacher_chooseDepartmentTitleSpinnerid"
+        android:textColor="#fff"
+        android:background="@drawable/buttonbackground"
+        android:text="Save"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        android:id="@+id/addTeacher_SaveButtonid"
+        />
+
+
+
+
+
+</RelativeLayout>
