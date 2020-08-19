@@ -45,5 +45,18 @@ public class DepartmentDatabase {
         return cursor;
 
     }
+   public Cursor getAllDay(){
+        String GETVALUE="SELECT * FROM days";
+        SQLiteDatabase sqLiteDatabase= openHelper.getWritableDatabase();
+        Cursor cursor=sqLiteDatabase.rawQuery(GETVALUE,null);
+        return cursor;
+
+    }   public Cursor getAllSpd(){
+        String GETVALUE="SELECT * FROM spd";
+        SQLiteDatabase sqLiteDatabase= openHelper.getWritableDatabase();
+        Cursor cursor=sqLiteDatabase.rawQuery(GETVALUE,null);
+        return cursor;
+
+    }
 
 }

@@ -41,6 +41,202 @@
         android:textSize="18sp"
 
         />
+    <Spinner
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createRoutineOKButtonid"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/createroutineClassListSpinnerid"
+        />
+    <Button
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_below="@+id/createroutineClassListSpinnerid"
+        android:background="@drawable/buttonbackground"
+        android:textColor="@android:color/white"
+        android:text="Ok"
+        android:textAllCaps="false"
+        android:id="@+id/createroutineclasslistSelectButtonid"
+        android:textSize="18sp"
+
+        />
+
+    <Spinner
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/createroutineclasslistSelectButtonid"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cTdaylistSpinnerid"
+        />
+
+    <Spinner
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cTdaylistSpinnerid"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/cTperiodListSpinnerid"
+        />
+    <Button
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:layout_below="@+id/cTperiodListSpinnerid"
+        android:background="@drawable/buttonbackground"
+        android:textColor="@android:color/white"
+        android:text="Ok"
+        android:textAllCaps="false"
+        android:id="@+id/cTdayperiodSelectButtonid"
+        android:textSize="18sp"
+
+        />
+
+    <TextView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/createroutinDetailsTextviewid"
+        android:layout_below="@+id/cTdayperiodSelectButtonid"
+        android:background="@drawable/buttonbackground"
+        android:layout_marginTop="10dp"
+        android:padding="8dp"
+        android:textSize="18sp"
+        android:textStyle="bold|italic"
+        android:textColor="#fff"
+        android:layout_centerHorizontal="true"
+        android:textAlignment="center"
+
+        />
+
+    <LinearLayout
+        android:id="@+id/line1"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/createroutinDetailsTextviewid"
+        android:weightSum="3"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:text="Teacher"
+                android:textAlignment="center"
+                />
+
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/crtTeacherSpinnerid"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:text="Subject"
+                android:textAlignment="center"
+                />
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/crtSubjectListSpinnerid"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:text="Class No"
+                android:textAlignment="center"
+                />
+
+
+            <Spinner
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/crtClassNoSpinnerid"
+                />
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/buttonbackground"
+        android:text="Save And Next"
+        android:textColor="#fff"
+        android:textSize="17sp"
+        android:textAllCaps="false"
+        android:padding="5dp"
+        android:id="@+id/crtsaveAndNextButtonid"
+
+        />
+
 
 
 
